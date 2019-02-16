@@ -4,6 +4,7 @@ import HackItem from '../Components/HackItem';
 
 const styles = (theme) => ({
   root: {
+    padding: 50
   }
 });
 
@@ -17,8 +18,8 @@ const hackathons = [{
   name: 'Hack 1',
   pool: 3000,
   image: '',
-  startDate: new Date('February 17, 2019 20:00:00'),
-  endDate: new Date('February 19, 2019 20:00:00'),
+  startDate: new Date('February 25, 2019 20:00:00'),
+  endDate: new Date('February 26, 2019 20:00:00'),
   hasLocation: false,
   location: '',
   state: states.PROGRAMMED
@@ -40,18 +41,46 @@ const hackathons = [{
     hasLocation: false,
     location: '',
     state: states.FINISHED
+}, {
+  name: 'Hack 4',
+  pool: 3000,
+  image: '',
+  startDate: new Date('February 25, 2019 20:00:00'),
+  endDate: new Date('February 26, 2019 20:00:00'),
+  hasLocation: false,
+  location: '',
+  state: states.PROGRAMMED
+}, {
+  name: 'Hack 5',
+  pool: 5000,
+  image: '',
+  startDate: new Date('February 14, 2019 20:00:00'),
+  endDate: new Date('February 17, 2019 20:00:00'),
+  hasLocation: false,
+  location: '',
+  state: states.RUNNING
+}, {
+    name: 'Hack 6',
+    pool: 4000,
+    image: '',
+    startDate: new Date('February 7, 2019 20:00:00'),
+    endDate: new Date('February 10, 2019 20:00:00'),
+    hasLocation: false,
+    location: '',
+    state: states.FINISHED
 }]
 
 
 class HackList extends React.Component {
+
   render() {
-    const { classes } = this.props;
-    return <div>
-      <Grid container>
+    const { classes, newHacks } = this.props;
+    return <div className={classes.root}>
+      <Grid container spacing={32}>
         <Grid item xs={3}>
-        <label>NEWEST</label>
-          <Grid container>
-            {hackathons.map((hack) => {
+        <h4>NEWEST</h4>
+          <Grid container spacing={16}>
+            {newHacks.map((hack) => {
                 return <Grid item xs={12}>
                   <HackItem {...hack} />
                 </Grid>
@@ -60,15 +89,10 @@ class HackList extends React.Component {
           </Grid>
         </Grid>
         <Grid item xs={9}>
-          <label>BEST RATED</label>
-          <Grid container>
+          <h4>BEST RATED</h4>
+          <Grid container spacing={16}>
             {hackathons.map((hack) => {
-              return <Grid item xs={3}>
-                <HackItem {...hack} />
-              </Grid>
-            })}
-            {hackathons.map((hack) => {
-              return <Grid item xs={3}>
+              return <Grid item xs={4}>
                 <HackItem {...hack} />
               </Grid>
             })}
