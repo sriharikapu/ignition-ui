@@ -215,13 +215,12 @@ class Hero extends React.Component {
           <Grid item xs={12} md={6}>
             <div style={{marginLeft: '90px'}}>
               <h2 style={{ textAlign: 'left', marginTop: 18, color: "White"}}>
-                BUILT THE FIRST EVER DECENTRALIZED HACKATHON
+                ACCELERATING IDEAS THROUGH VIRTUAL HACKATHONS
               </h2>
               <p>
                 <h3>
-                Have you ever thoght thaa hackathon can be decentralized to 
-                improve judging and distribute all promised bountie 
-              </h3>
+                  Expose the developers to companies and sponsors who enable them to create hacks that can make true impact
+                </h3>
               </p>
               <div className={classes.buttonContainer}>
                 <CreateButton onClick={this.handleOpen}><h3>CREATE HACKATHON</h3></CreateButton>
