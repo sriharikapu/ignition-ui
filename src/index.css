@@ -16,15 +16,16 @@ h1 {
 
 
 h2 {
-  font-weight: 300;
+  color: aliceblue;
+  font-weight: 500;
   font-size: 40px;
   letter-spacing: 0.1px;
 }
 h3 {
-  font-weight: 400;
-  font-size: 35px;
+  font-weight: 300;
+  color: aliceblue;
+  font-size: 20px;
   letter-spacing: 0.1px;
-  line-height: 1.75;
   /* font-family: "Raleway", sans-serif; */
 }
 
