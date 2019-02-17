@@ -7,8 +7,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Fab from '@material-ui/core/Fab';
-import SendIcon from '@material-ui/icons/Send';
 
 const styles = theme => ({
   root: {
@@ -19,6 +17,10 @@ const styles = theme => ({
   table: {
     // minWidth: 700,
   },
+  pic: {
+    borderRadius: '50%', 
+    height: 60
+  }
 });
 
 function JudgesTable(props) {
@@ -29,6 +31,7 @@ function JudgesTable(props) {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
+            <TableCell></TableCell>
             <TableCell>Name</TableCell>
             {/* <TableCell>Description</TableCell> */}
             <TableCell align="right">Votes Given</TableCell>
@@ -36,8 +39,12 @@ function JudgesTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
+
           {judges.map(row => (
             <TableRow key={row.id}>
+              <TableCell component="th" scope="row">
+                <img src={row.img} className={classes.pic} />
+              </TableCell>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
