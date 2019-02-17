@@ -3,7 +3,7 @@ import axios from 'axios';
 import { withStyles, Grid, TextField, DialogActions, Button } from '@material-ui/core';
 import TeamsTable from '../Components/TeamsTable';
 import JudgesTable from '../Components/JudgesTable';
-import { HackContract, web3Service } from '../Services';
+import { HackContract, web3Service, HackFactory } from '../Services';
 
 import DialogContent from '@material-ui/core/DialogContent';
 
@@ -88,7 +88,7 @@ class Hack extends React.Component {
       url: ENDPOINT,
       headers: {'Content-Type': 'application/json'},
       data: {
-        "query": "query { candidates(_periodIndex: 30) { _candidateAddress _totalAmountOfVotes } }"
+        "query": "query { candidates(_periodIndex: 0) { _candidateAddress _totalAmountOfVotes } }"
       }
     }).then(response => {
       const candidates = response.data.data.candidates;
@@ -105,7 +105,7 @@ class Hack extends React.Component {
       url: ENDPOINT,
       headers: {'Content-Type': 'application/json'},
       data: {
-        "query": "query { voters(_periodIndex: 30) {_voterAddress _tokensUsed _tokensStaked _tokensRemaining } }"
+        "query": "query { voters(_periodIndex: 0) {_voterAddress _tokensUsed _tokensStaked _tokensRemaining } }"
       }
     }).then(response => {
       const voters = response.data.data.voters;
@@ -124,8 +124,9 @@ class Hack extends React.Component {
 
   sendVote = () => {
     web3Service.getAccount().then((wallet) => {
-      return HackContract.methods
-        .vote(this.state.currentVoteWallet, this.state.amountVotes)
+      // return HackContract.methods
+      //   .vote(this.state.currentVoteWallet, this.state.amountVotes)
+      return HackFactory.methods.vote(0, this.state.currentVoteWallet, this.state.amountVotes)
         .send({ from: wallet })
     }).then((result) => this.handleClose());
   }
