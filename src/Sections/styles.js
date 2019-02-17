@@ -115,10 +115,13 @@ export const hero = (theme) => ({
   orText: {
     marginTop: 20
   },
+  modalTitle: {
+    textAlign: 'center'
+  },
   modalBody: {
-    height: '400px',
-    width: '100%',
-    padding: '100px'
+    height: '100%',
+    minWidth: '400px',
+    padding: '0px 50px 50px'
   },
   particles: {
     position: 'absolute',
@@ -130,5 +133,22 @@ export const hero = (theme) => ({
   },
   dialog: {
     width: '100%',
+  },
+  textField: {
+    width: '100%'
+  },
+  actionContainer: {
+    marginTop: '-20px',
+    padding: '0px 50px 10px'
+  },
+  distContainer: {
+    display: 'flex',
+  },
+  distLabel: {
+    width: '200px'
+  },
+  distField: {
+    width: '200px',
+    right: 0
   }
 });
