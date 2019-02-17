@@ -10,7 +10,7 @@ import Hack from './Sections/Hack';
 ReactDOM.render(
   <Router>
     <div>
-      <Route exact path="/" component={App} />
+      <Route exact path={process.env.PUBLIC_URL + '/'} component={App} />
       <Route path="/hack" component={Hack} />
     </div>
   </Router>, 
