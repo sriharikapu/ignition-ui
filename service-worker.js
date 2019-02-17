@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/ignition-ui/precache-manifest.56b72432932063fcbdee4a973671b991.js"
+  "/ignition-ui/precache-manifest.a2fb485ef3879a86712fdf4568c7e424.js"
 );
 
 workbox.clientsClaim();
