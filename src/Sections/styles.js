@@ -45,6 +45,13 @@ export const hero = (theme) => ({
     'align-items': 'center',
     display: 'flex'
   },
+  particles: {
+    position: 'absolute',
+    top: 0,
+    height: 600,
+    width: '100%',
+    background: 'transparent !important'
+  },
   container: {
     // marginTop: '150px'
   },

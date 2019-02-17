@@ -1,10 +1,17 @@
 import React from 'react';
 import { withStyles, Grid } from '@material-ui/core';
 import HackItem from '../Components/HackItem';
+import { Link } from 'react-router-dom';
 
 const styles = (theme) => ({
   root: {
     padding: 50
+  },
+  item: {
+    '& a': {
+      textDecoration: 'none !important',
+      color: 'inherit'
+    }
   }
 });
 
@@ -81,19 +88,18 @@ class HackList extends React.Component {
         <h4>NEWEST</h4>
           <Grid container spacing={16}>
             {newHacks.map((hack) => {
-                return <Grid item xs={12}>
-                  <HackItem {...hack} />
-                </Grid>
-              })
-            }
+              return <Grid item xs={12}>
+                <Link to="/hack"><HackItem {...hack} /></Link>
+              </Grid>
+            })}
           </Grid>
         </Grid>
         <Grid item xs={9}>
           <h4>BEST RATED</h4>
           <Grid container spacing={16}>
             {hackathons.map((hack) => {
-              return <Grid item xs={4}>
-                <HackItem {...hack} />
+              return <Grid item xs={4} className={classes.item}>
+                <Link to="/hack"><HackItem {...hack} /></Link>
               </Grid>
             })}
           </Grid>
