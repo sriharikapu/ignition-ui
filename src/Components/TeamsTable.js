@@ -24,11 +24,33 @@ const styles = theme => ({
 function TeamsTable(props) {
   const { classes, teams, onVote, voteOpen } = props;
 
+  function getKudo(id) {
+    let kudo;
+    switch (id) {
+      case 1: {
+        kudo = 'https://s.gitcoin.co/static/v2/images/kudos/trophy_1.2e639d833962.svg';
+        break;
+      }
+      case 2: {
+        kudo = 'https://s.gitcoin.co/static/v2/images/kudos/trophy_2.f039e509264b.svg';
+        break;
+      }
+      case 3: {
+        kudo = 'https://s.gitcoin.co/static/v2/images/kudos/trophy_3.efe26dc35ec7.svg';
+        break;
+      }
+      default: {
+        kudo = 'https://s.gitcoin.co/static/v2/images/kudos/go_developer.6a8228167b27.svg';
+      }
+    }
+    return kudo;
+  }
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
+            <TableCell>Kudo</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Description</TableCell>
             {/* <TableCell align="right">Members</TableCell> */}
@@ -39,8 +61,9 @@ function TeamsTable(props) {
         <TableBody>
           {teams.map(row => (
             <TableRow key={row.id}>
+              <TableCell><img src={getKudo(row.id)} style={{height: 60}}/></TableCell>
               <TableCell component="th" scope="row">
-                {row.name}
+                <a href={row.link} target="_blank">{row.name}</a>
               </TableCell>
               <TableCell>{row.description}</TableCell>
               {/* <TableCell align="right">{row.members}</TableCell> */}

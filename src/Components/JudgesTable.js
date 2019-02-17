@@ -30,7 +30,7 @@ function JudgesTable(props) {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell>Description</TableCell>
+            {/* <TableCell>Description</TableCell> */}
             <TableCell align="right">Votes Given</TableCell>
             <TableCell align="right">Votes Available</TableCell>
           </TableRow>
@@ -41,7 +41,7 @@ function JudgesTable(props) {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell>{row.description}</TableCell>
+              {/* <TableCell>{row.description}</TableCell> */}
               <TableCell align="right">{row.votesGiven}</TableCell>
               <TableCell align="right">{row.votesAvailable}</TableCell>
             </TableRow>

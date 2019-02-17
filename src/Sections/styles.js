@@ -56,9 +56,8 @@ export const header = (theme) => ({
     zIndex: 1
   },
   container: {
-    maxWidth: 1068,
-    margin: 'auto',
-    textAlign: 'center'
+    margin: '20px auto',
+    textAlign: 'right'
   },
   logoContainer: {
     fontSize: 30,

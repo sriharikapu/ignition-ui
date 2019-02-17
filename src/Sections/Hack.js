@@ -26,14 +26,14 @@ const hack = (theme) => ({
 })
 
 const teamWallets = {
-  '0x76CC77f2627e4bfFf1Dc7a88f4c80a632894F0E2': 'Team 1',
-  '0xDEf7Bf3Cb2495B69f13C608b65FeAb5C55410685': 'Team 2',
-  '0x00B8FBD65D61b7DFe34b9A3Bb6C81908d7fFD541': 'Team 3',
-  '0x87F25BfEa6d93E30FA0a3E0D86C386244F636a41': 'Team 4',
-  '0xdaf4f3f616cDed1e5fB2E7c0A77361718BB7A105': 'Team 5',
-  '0x9BCf28E6c1E19F11DCa9f2A45fBdC4327A94e522': 'Team 6',
-  '0xbaA5d582b0ACdc1D56Bc3D3CA83c4F6f89BdE54C': 'Team 7',
-  '0x484A3588e42fB1541858aA314854eEd26E14816c': 'Team 8',
+  '0x76CC77f2627e4bfFf1Dc7a88f4c80a632894F0E2': { name: 'Ethergram', description: 'Simple payments over telegram', link: 'https://kauri.io/article/db03ca50ad79458ea66e9de25d53fb2a/v3/ethergram' },
+  '0xDEf7Bf3Cb2495B69f13C608b65FeAb5C55410685': { name: 'EthVelcro', description: 'Trigger webhooks with smart ...', link: 'https://kauri.io/article/172e228b2e7d4beaa59c0a49a027ef1e/v1/ethvelcro' },
+  '0x00B8FBD65D61b7DFe34b9A3Bb6C81908d7fFD541': { name: 'The Will', description: 'The Will Of The People', link: 'https://kauri.io/article/77c3af763758464bb19e61aae06f0e6c/v1/the-will' },
+  '0x87F25BfEa6d93E30FA0a3E0D86C386244F636a41': { name: 'Impact Curator', description: 'Curation of social impact projects', link: 'https://kauri.io/article/62a6c0e38c094999b6f3945a5ed07cdb/v1/impact-curator' },
+  '0xdaf4f3f616cDed1e5fB2E7c0A77361718BB7A105': { name: 'UpTown', description: 'Empowering residents affected by rapidly ...', link: 'https://kauri.io/article/5bc0603263a745aab70373b319622abc/v1/uptown' },
+  '0x9BCf28E6c1E19F11DCa9f2A45fBdC4327A94e522': { name: 'Wel-fair', description: 'Government task marketplace to "top-up" welfare benefits', link: 'https://kauri.io/article/76125c8a2dd543eb8fa2076a46be56f3/v1/wel-fair' },
+  '0xbaA5d582b0ACdc1D56Bc3D3CA83c4F6f89BdE54C': { name: 'ProjectMap', description: 'An incentivization layer for humanitarian ...', link: 'https://kauri.io/article/cff659cda55242b3885242e97675fba9/v7/projectmap' },
+  '0x484A3588e42fB1541858aA314854eEd26E14816c': { name: 'SmartPiggies', description: 'Decentralized Derivatives for Universal Price Insurance', link: 'https://kauri.io/article/06b31a287ddf407e98e31893994bad31/v4/smartpiggies' },
 }
 
 const judgeWallets = {
@@ -55,9 +55,9 @@ function createDataJudge(name, description, votesGiven, votesAvailable) {
 
 
 let id = 0;
-function createData(name, description, members, votes, walletAddress) {
+function createData(name, description, members, votes, walletAddress, link) {
   id += 1;
-  return { id, name, description, members, votes, walletAddress };
+  return { id, name, description, members, votes, walletAddress, link };
 }
 
 
@@ -93,7 +93,8 @@ class Hack extends React.Component {
     }).then(response => {
       const candidates = response.data.data.candidates;
       const teamsData = candidates.map(team => {
-        return createData(teamWallets[team._candidateAddress], '', 3, team._totalAmountOfVotes, team._candidateAddress)
+        const teamInfo = teamWallets[team._candidateAddress] || {}
+        return createData(teamInfo.name, teamInfo.description, 3, team._totalAmountOfVotes, team._candidateAddress, teamInfo.link)
       });
       const teams = teamsData.filter((team) => !!team.name)
       this.setState({ teams })
