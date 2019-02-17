@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/ignition-ui/static/css/main.5cafe8ab.chunk.css"
   },
   {
-    "revision": "e2697f764fcf3f15d1f1389c1df46a75",
+    "revision": "d8efbfb40cb38e1c362da8bbec24cbf0",
     "url": "/ignition-ui/index.html"
   }
 ];
