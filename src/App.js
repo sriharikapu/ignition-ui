@@ -4,6 +4,7 @@ import getTheme from './theme';
 import Hero from './Sections/Hero';
 import Header from './Sections/Header';
 import HackList from './Sections/HackList';
+import { HackFactory, web3Service } from './Services';
 
 
 const styles = () => ({
@@ -21,8 +22,8 @@ const defaultNewHacks = [{
   name: 'NEW Hack 1',
   pool: 3000,
   image: '',
-  startDate: new Date('February 17, 2019 20:00:00'),
-  endDate: new Date('February 19, 2019 20:00:00'),
+  startDate: new Date('February 20, 2019 20:00:00'),
+  endDate: new Date('February 21, 2019 20:00:00'),
   hasLocation: false,
   location: '',
   state: states.PROGRAMMED
@@ -31,7 +32,7 @@ const defaultNewHacks = [{
   pool: 5000,
   image: '',
   startDate: new Date('February 14, 2019 20:00:00'),
-  endDate: new Date('February 17, 2019 20:00:00'),
+  endDate: new Date('February 20, 2019 20:00:00'),
   hasLocation: false,
   location: '',
   state: states.RUNNING
@@ -48,34 +49,31 @@ const defaultNewHacks = [{
 class App extends Component {
 
   state = {
-    newHacks: [],
+    newHacks: defaultNewHacks,
     hacks: []
   }
 
   componentDidMount() {
-    let newHacks = localStorage.getItem('newHacks');
-    if (!newHacks) {
-      newHacks = defaultNewHacks;
-      localStorage.setItem('newHacks', JSON.stringify(defaultNewHacks));
-    }
-    newHacks = JSON.parse(newHacks);
-    this.setState({ newHacks });
+    // this.setState({ newHacks });
   }
 
   saveNewHack = (hackathon) => {
-    const newHacks = localStorage.getItem('newHacks');
-    const newHacksJSON = JSON.parse(newHacks);
+    const newHacksJSON = this.state.newHacks;
 
-    newHacksJSON.unshift(hackathon);
-
-    localStorage.setItem('newHacks', JSON.stringify(newHacksJSON));
-    this.setState({ newHacks: newHacksJSON });
+    web3Service.getAccount().then((wallet) => {
+      return HackFactory.methods.newHackathon(Math.floor(new Date(hackathon.endDate).getTime()/1000), Math.floor(new Date(hackathon.startDate).getTime()/1000), hackathon.distribution)
+      .send({from: wallet})
+      .then(response => {
+        newHacksJSON.unshift(hackathon);
+        this.setState({ newHacks: newHacksJSON });
+      })
+    });
+    
   }
 
   render() {
     const theme = getTheme();
     const { classes } = this.props;
-    console.log(this.state.newHacks)
     return (
       <MuiThemeProvider theme={theme}>
         <div className="App">

@@ -21,26 +21,8 @@ const styles = theme => ({
   },
 });
 
-let id = 0;
-function createData(name, description, members, votes) {
-  id += 1;
-  return { id, name, description, members, votes };
-}
-
-const rows = [
-  createData('Ignition', 'Virtual Pre Accelerator', 4, 20),
-  createData('Ignition', 'Virtual Pre Accelerator', 4, 19),
-  createData('Ignition', 'Virtual Pre Accelerator', 4, 18),
-  createData('Ignition', 'Virtual Pre Accelerator', 4, 10),
-  createData('Ignition', 'Virtual Pre Accelerator', 4, 9),
-  createData('Ignition', 'Virtual Pre Accelerator', 4, 8),
-  createData('Ignition', 'Virtual Pre Accelerator', 4, 7),
-  createData('Ignition', 'Virtual Pre Accelerator', 4, 6),
-  createData('Ignition', 'Virtual Pre Accelerator', 4, 5),
-];
-
 function TeamsTable(props) {
-  const { classes } = props;
+  const { classes, teams, onVote, voteOpen } = props;
 
   return (
     <Paper className={classes.root}>
@@ -55,7 +37,7 @@ function TeamsTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
+          {teams.map(row => (
             <TableRow key={row.id}>
               <TableCell component="th" scope="row">
                 {row.name}
@@ -64,7 +46,7 @@ function TeamsTable(props) {
               {/* <TableCell align="right">{row.members}</TableCell> */}
               <TableCell align="right">{row.votes}</TableCell>
               <TableCell align="right">
-                <Fab color="default" aria-label="Add" size="small">
+                <Fab color="default" aria-label="Add" size="small" onClick={onVote(row.walletAddress)} disabled={!voteOpen}>
                   <SendIcon />
                 </Fab>
               </TableCell>

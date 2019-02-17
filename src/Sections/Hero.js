@@ -70,7 +70,6 @@ class Hero extends React.Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this.state.distribution)
     return (
       <div className={classes.root} id="Hero">
         <div className={classes.particles}>

@@ -35,14 +35,9 @@ function getColour(startColour, endColour, min, max, value) {
 }
 
 function changeBackgroundColour() {
-  var count = 0;
-  window.setInterval(function() {
-    count = (count + 1) % 200;
+  const count = (0 + 1) % 200;
 
-    var newColour = getColour("#660066", "#000066", 0, 200, count);
-
-    document.getElementById("Hero").style.backgroundColor = newColour;
-  }, 20);
+  return getColour("#660066", "#000066", 0, 200, count);
 }
 
 const font = '#000000'
@@ -54,7 +49,7 @@ export const header = (theme) => ({
     minHeight: 62,
     top: 0,
     position: 'absolute',
-    width: '100%',
+    width: '90%',
     backgroundColor: 'transparent',
     color: font,
     padding: '5px 25px',
@@ -82,19 +77,12 @@ export const hero = (theme) => ({
     height: '95vh',
     width: '100%',
     minHeight: '600px',
-    backgroundImage: changeBackgroundColour(),
+    backgroundColor: changeBackgroundColour(),
     color: font,
     '-webkit-align-items': 'center',
     '-ms-flex-align': 'center',
     'align-items': 'center',
     display: 'flex'
-  },
-  particles: {
-    position: 'absolute',
-    top: 0,
-    height: 600,
-    width: '100%',
-    background: 'transparent !important'
   },
   container: {
     zIndex: '100'

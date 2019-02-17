@@ -15,7 +15,7 @@ const styles = (theme) => ({
     color: 'black',
     border: '2px solid white',
     borderRadius: 50,
-    padding: '11px 38px',
+    padding: '0px 38px',
     transition:' all .2s linear',
     '&:hover': {
       borderColor: 'black', 

@@ -22,14 +22,14 @@ const states = {
 }
 
 const hackathons = [{
-  name: 'Hack 1',
-  pool: 3000,
+  name: 'ETH Denver',
+  pool: 10000,
   image: '',
-  startDate: new Date('February 25, 2019 20:00:00'),
-  endDate: new Date('February 26, 2019 20:00:00'),
+  startDate: new Date('February 15, 2019 20:00:00'),
+  endDate: new Date('February 17, 2019 20:00:00'),
   hasLocation: false,
   location: '',
-  state: states.PROGRAMMED
+  state: states.RUNNING
 }, {
   name: 'Hack 2',
   pool: 5000,
@@ -98,7 +98,7 @@ class HackList extends React.Component {
           <h4>BEST RATED</h4>
           <Grid container spacing={16}>
             {hackathons.map((hack) => {
-              return <Grid item xs={4} className={classes.item}>
+              return <Grid item xs={4} md={3} className={classes.item}>
                 <Link to="/hack"><HackItem {...hack} /></Link>
               </Grid>
             })}

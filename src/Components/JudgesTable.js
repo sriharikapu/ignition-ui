@@ -21,26 +21,8 @@ const styles = theme => ({
   },
 });
 
-let id = 0;
-function createData(name, description, votesGiven, votesAvailable) {
-  id += 1;
-  return { id, name, description, votesGiven, votesAvailable };
-}
-
-const rows = [
-  createData('Name', 'COnsensys CEO', 4, 20),
-  createData('Name', 'COnsensys CEO', 4, 19),
-  createData('Name', 'COnsensys CEO', 4, 18),
-  createData('Name', 'COnsensys CEO', 4, 10),
-  createData('Name', 'COnsensys CEO', 4, 9),
-  createData('Name', 'COnsensys CEO', 4, 8),
-  createData('Name', 'COnsensys CEO', 4, 7),
-  createData('Name', 'COnsensys CEO', 4, 6),
-  createData('Name', 'COnsensys CEO', 4, 5),
-];
-
 function JudgesTable(props) {
-  const { classes } = props;
+  const { classes, judges } = props;
 
   return (
     <Paper className={classes.root}>
@@ -54,7 +36,7 @@ function JudgesTable(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
+          {judges.map(row => (
             <TableRow key={row.id}>
               <TableCell component="th" scope="row">
                 {row.name}
