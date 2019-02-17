@@ -7,6 +7,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 
 import Dialog from '@material-ui/core/Dialog';
+import Particles from 'react-particles-js';
 
 function getSum(total, num) {
   return total + num;
@@ -71,7 +72,10 @@ class Hero extends React.Component {
     const { classes } = this.props;
     console.log(this.state.distribution)
     return (
-      <div className={classes.root}>
+      <div className={classes.root} id="Hero">
+        <div className={classes.particles}>
+          <Particles />
+        </div>
         <Dialog onClose={this.handleClose} open={this.state.open} className={classes.dialog} maxWidth="md">
           <DialogTitle className={classes.modalTitle}>Hackathon Information</DialogTitle>
           <DialogContent>
@@ -208,24 +212,21 @@ class Hero extends React.Component {
             </DialogActions>
           </div>
         </Dialog>
-        <Grid container>
+        <Grid container className={classes.container}>
           <Grid item xs={12} md={6}>
             <div style={{marginLeft: '90px'}}>
-              <h2 style={{ textAlign: 'left', marginTop: 18}}>
-                Build your own site with the best interfaces for your web & mobile apps
+              <h2 style={{ textAlign: 'left', marginTop: 18, color: "White"}}>
+                BUILT THE FIRST EVER DECENTRALIZED HACKATHON
               </h2>
               <p>
-                Whether you want to fill this paragraph with some text like I'm doing right now, this place is perfect to
-                 describe some features or anything you want - React has a complete solution for you.
+                <h3>
+                Have you ever thoght thaa hackathon can be decentralized to 
+                improve judging and distribute all promised bountie 
+              </h3>
               </p>
               <div className={classes.buttonContainer}>
-                <CreateButton onClick={this.handleOpen}>Create Hackathon</CreateButton>
+                <CreateButton onClick={this.handleOpen}><h3>CREATE HACKATHON</h3></CreateButton>
               </div>
-            </div>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <div style={{textAlign: 'center'}} className="image">
-              SOME IMAGE
             </div>
           </Grid>
         </Grid>

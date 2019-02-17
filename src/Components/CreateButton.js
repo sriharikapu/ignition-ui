@@ -13,14 +13,14 @@ const styles = (theme) => ({
     textAlign: 'center',
     cursor: 'pointer',
     color: 'black',
-    border: '2px solid blue',
+    border: '2px solid white',
     borderRadius: 50,
     padding: '11px 38px',
     transition:' all .2s linear',
     '&:hover': {
-      borderColor: 'blue', 
+      borderColor: 'black', 
       color: 'white',
-      backgroundColor: 'blue'
+      backgroundColor: 'black'
     }
   }
 });

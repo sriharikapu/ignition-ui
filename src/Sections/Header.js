@@ -10,7 +10,7 @@ class Header extends React.Component {
       <header className={classes.root}>
         <div className={classes.container}>
           <div className={classes.logoContainer}>
-            IGNITION
+            <h2 className={classes.heading}>IGNITION</h2>
           </div>
         </div>
       </header>
